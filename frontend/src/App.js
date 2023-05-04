@@ -1,12 +1,11 @@
 import GlobalStyle from './styles/global';
 import styled from 'styled-components';
 import Form from './components/Form.js';
-import Grid from './components/Grid.js';
-import { ToastContainer, toast } from 'react-toastify';
+import Grid from './components/Grid';
+import { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 const Container = styled.div`
   width: 100%;
@@ -17,6 +16,7 @@ const Container = styled.div`
   align-items: center;
   gap: 10px;
 `;
+
 const Title = styled.h2``;
 
 function App() {
@@ -39,9 +39,9 @@ function App() {
   return (
     <>
       <Container>
-        <Title>Usuários</Title>
-        <Form />
-        <Grid users={users} />
+        <Title>USUÁRIOS</Title>
+        <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
+        <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />

@@ -21,7 +21,7 @@ export const addUser = (req, res) => {
     req.body.data_nascimento,
   ];
 
-  db.query(q, [values], (err) => {
+  db.query(q, values, (err) => {
     if (err) return res.json(err);
 
     return res.status(200).json('Usuário criado com sucesso.');
